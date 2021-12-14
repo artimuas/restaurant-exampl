@@ -25,6 +25,8 @@ class RestaurantListViewModel {
     var service = RestaurantService()
     let mapper = RestaurantMapper()
     
+    weak var viewController: RestaurantListViewController?
+    
     func fetchRestaurants(forLocation location: Location, completion: @escaping (Result<[Restaurant], ViewModelError>) -> Void) {
         service.getRestaurants(atLat: 40.68919, lon: -73.992378, distance: 10) { [weak self] result in
             guard let self = self else { return }
@@ -42,8 +44,12 @@ class RestaurantListViewModel {
         }
     }
     
-    func itemViewModel(atIndexPath indexPath: IndexPath) -> RestaurantCellViewModel? {
+    func itemViewModel(atIndexPath indexPath: IndexPath) -> RestaurantListCellViewModel? {
         guard 0..<restaurants.count ~= indexPath.row else { return nil }
-        return RestaurantCellViewModel(restaurant: restaurants[indexPath.row])
+        return RestaurantListCellViewModel(restaurants[indexPath.row])
+    }
+    
+    func select(_ restaurant: Restaurant) {
+        
     }
 }

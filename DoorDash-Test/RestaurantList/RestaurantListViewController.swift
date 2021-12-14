@@ -21,6 +21,8 @@ class RestaurantListViewController: UIViewController, UISearchControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel.viewController = self
+        
         configureView()
         loadData()
     }
@@ -55,7 +57,10 @@ extension RestaurantListViewController: UITableViewDataSource {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as! RestaurantListViewCell
-        cell.configure(withViewModel: cellViewModel)
+        cell.configure(withViewModel: cellViewModel) { [weak self, indexPath] restaurant in
+            guard let _ = self else { return }
+            
+        }
         
         return cell
     }
@@ -82,18 +87,6 @@ extension RestaurantListViewController {
         tableView.refreshControl?.addTarget(self,
                                             action: #selector(loadData),
                                             for: .valueChanged)
-//        tableView.tableHeaderView = nil
-//        tableView.contentInset = UIEdgeInsets(top: 250, left: 0, bottom: 0, right: 0)
-//        let imageView = UIImageView(image: UIImage(named: "menu.jpg"))
-//        imageView.frame = CGRect(x: 0, y: 0, width: 500, height: 300)
-//        tableView.addSubview(imageView)
-        
-        
-        // Configure Search Controller
-//        searchController = UISearchController(searchResultsController: self)
-//        searchController.delegate = self
-//        searchController.searchBar.delegate = self
-//        navigationItem.searchController = searchController
     }
     
     private func updateView() {

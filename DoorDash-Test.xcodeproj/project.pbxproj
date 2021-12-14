@@ -23,7 +23,7 @@
 		A6991EB127631660009B85FC /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6991EB027631660009B85FC /* RestaurantService.swift */; };
 		A6F7948C276531E900A60065 /* RestaurantListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F7948B276531E900A60065 /* RestaurantListViewCell.swift */; };
 		A6F794902765325400A60065 /* RestaurantListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F7948F2765325400A60065 /* RestaurantListViewCell.xib */; };
-		A6F794922765665500A60065 /* RestaurantCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F794912765665500A60065 /* RestaurantCellViewModel.swift */; };
+		A6F794922765665500A60065 /* RestaurantListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F794912765665500A60065 /* RestaurantListCellViewModel.swift */; };
 		A6F7949427658B9600A60065 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F7949327658B9600A60065 /* Cache.swift */; };
 		A6F794962766AAA700A60065 /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F794952766AAA700A60065 /* RestaurantDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -66,7 +66,7 @@
 		A6991EB027631660009B85FC /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		A6F7948B276531E900A60065 /* RestaurantListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewCell.swift; sourceTree = "<group>"; };
 		A6F7948F2765325400A60065 /* RestaurantListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantListViewCell.xib; sourceTree = "<group>"; };
-		A6F794912765665500A60065 /* RestaurantCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCellViewModel.swift; sourceTree = "<group>"; };
+		A6F794912765665500A60065 /* RestaurantListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListCellViewModel.swift; sourceTree = "<group>"; };
 		A6F7949327658B9600A60065 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		A6F794952766AAA700A60065 /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,16 +136,16 @@
 		A646DCD6275F011A00AB14E5 /* DoorDash-Test */ = {
 			isa = PBXGroup;
 			children = (
-				A646DCE8275F011D00AB14E5 /* Info.plist */,
-				A646DCD7275F011A00AB14E5 /* AppDelegate.swift */,
-				A646DCD9275F011A00AB14E5 /* SceneDelegate.swift */,
+				A6B0433E27686B180002F923 /* App */,
 				A646DCE3275F011D00AB14E5 /* Assets.xcassets */,
 				A646DD0A2760774100AB14E5 /* DataModel */,
+				A646DCE8275F011D00AB14E5 /* Info.plist */,
 				A63044D0276466BA00BEC33D /* Mapper */,
+				A6B0433D27686A520002F923 /* RestaurantDetail */,
+				A6B0433C27686A380002F923 /* RestaurantList */,
 				A646DD0F27607B3500AB14E5 /* Service */,
 				A6991EAF27631567009B85FC /* ServiceModel */,
-				A646DD0B2760774600AB14E5 /* View */,
-				A646DD0C2760774D00AB14E5 /* ViewModel */,
+				A63044D1276466CC00BEC33D /* Storyboards */,
 			);
 			path = "DoorDash-Test";
 			sourceTree = "<group>";
@@ -175,32 +175,12 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
-		A646DD0B2760774600AB14E5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A63044D1276466CC00BEC33D /* Storyboards */,
-				A646DD0D276077AB00AB14E5 /* RestaurantListViewController.swift */,
-				A6F7948B276531E900A60065 /* RestaurantListViewCell.swift */,
-				A6F7948F2765325400A60065 /* RestaurantListViewCell.xib */,
-				A6F794952766AAA700A60065 /* RestaurantDetailViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		A646DD0C2760774D00AB14E5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A63044D22764D7C100BEC33D /* RestaurantListViewModel.swift */,
-				A6F794912765665500A60065 /* RestaurantCellViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		A646DD0F27607B3500AB14E5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				A6991EB027631660009B85FC /* RestaurantService.swift */,
 				A6F7949327658B9600A60065 /* Cache.swift */,
+				A6991EB027631660009B85FC /* RestaurantService.swift */,
+				A63044CA2763B08A00BEC33D /* ServiceModelRestaurant.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -208,9 +188,37 @@
 		A6991EAF27631567009B85FC /* ServiceModel */ = {
 			isa = PBXGroup;
 			children = (
-				A63044CA2763B08A00BEC33D /* ServiceModelRestaurant.swift */,
 			);
 			path = ServiceModel;
+			sourceTree = "<group>";
+		};
+		A6B0433C27686A380002F923 /* RestaurantList */ = {
+			isa = PBXGroup;
+			children = (
+				A6F794912765665500A60065 /* RestaurantListCellViewModel.swift */,
+				A6F7948B276531E900A60065 /* RestaurantListViewCell.swift */,
+				A6F7948F2765325400A60065 /* RestaurantListViewCell.xib */,
+				A646DD0D276077AB00AB14E5 /* RestaurantListViewController.swift */,
+				A63044D22764D7C100BEC33D /* RestaurantListViewModel.swift */,
+			);
+			path = RestaurantList;
+			sourceTree = "<group>";
+		};
+		A6B0433D27686A520002F923 /* RestaurantDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A6F794952766AAA700A60065 /* RestaurantDetailViewController.swift */,
+			);
+			path = RestaurantDetail;
+			sourceTree = "<group>";
+		};
+		A6B0433E27686B180002F923 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A646DCD7275F011A00AB14E5 /* AppDelegate.swift */,
+				A646DCD9275F011A00AB14E5 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,7 +362,7 @@
 				A63044CF2764663500BEC33D /* RestaurantMapper.swift in Sources */,
 				A646DCDA275F011A00AB14E5 /* SceneDelegate.swift in Sources */,
 				A63044CD2763C57700BEC33D /* RestaurantDataModel.swift in Sources */,
-				A6F794922765665500A60065 /* RestaurantCellViewModel.swift in Sources */,
+				A6F794922765665500A60065 /* RestaurantListCellViewModel.swift in Sources */,
 				A6F794962766AAA700A60065 /* RestaurantDetailViewController.swift in Sources */,
 				A63044CB2763B08A00BEC33D /* ServiceModelRestaurant.swift in Sources */,
 			);

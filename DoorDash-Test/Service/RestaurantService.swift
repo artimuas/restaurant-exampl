@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct RestaurantTarget: Hashable {
-    private static let apiKey = "aceb868c3e6ee100cc2d17961d42b9ee"
+    private static let apiKey = "{API_KEY}"
     
     private static let host = "https://api.documenu.com/v2"
     
@@ -28,7 +28,7 @@ struct RestaurantTarget: Hashable {
     private let headers = [
         "x-api-key": Self.apiKey,
         "x-rapidapi-host": "documenu.p.rapidapi.com",
-        "x-rapidapi-key": "865a4d2bd3msh9e1d0da3ec40ad1p14a6ddjsne31126bef2d8"
+        "x-rapidapi-key": "{RAPID_API_KEY}"
     ]
     
     var urlRequest: URLRequest {

@@ -11,16 +11,17 @@ import UIKit
 class RestaurantDetailViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     
-    var lastScrollingOffset: CGFloat = 0.0
-    var maxHeaderHeight: CGFloat = 300.0
-    var minHeaderHeight: CGFloat = 0
+    private var lastScrollingOffset: CGFloat = 0.0
+    private var maxHeaderHeight: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
 //        collectionView.delegate = self
+        maxHeaderHeight = headerHeightConstraint.constant
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,27 +51,10 @@ extension RestaurantDetailViewController: UICollectionViewDataSource {
 // MARK: ScrollView Delegate
 extension RestaurantDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let difference = scrollView.contentOffset.y - lastScrollingOffset
-        if headerViewHeightConstraint.constant > maxHeaderHeight {
-            headerViewHeightConstraint.constant = maxHeaderHeight
-        } else {
-            headerViewHeightConstraint.constant = headerViewHeightConstraint.constant - difference
-        }
         
-        lastScrollingOffset = scrollView.contentOffset.y
+        let y = maxHeaderHeight - (scrollView.contentOffset.y + maxHeaderHeight)
+        let height = min(max(150, y), 400)
+        headerHeightConstraint.constant = height
+        view.layoutIfNeeded()
     }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-          let  midValue =  self.maxHeaderHeight / 2  // half range value of maxheight
-          UIView.animate(withDuration: 0.2) {
-              // if current height of headeview is greated than mid value. Set minHeight as a height of  headerview else Set maxHeight as a height of  headerview
-              if midValue > self.headerViewHeightConstraint.constant {
-                  self.headerViewHeightConstraint.constant = self.minHeaderHeight
-              } else {
-                  self.headerViewHeightConstraint.constant = self.maxHeaderHeight
-              }
-              self.view.layoutIfNeeded()
-          }
-          
-      }
 }

@@ -76,6 +76,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oUC-Fy-Yur">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="150" maxX="0.0" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WtA-W7-HM2">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -119,7 +120,8 @@
                     <navigationItem key="navigationItem" id="val-9e-ljZ"/>
                     <connections>
                         <outlet property="collectionView" destination="oUC-Fy-Yur" id="mgX-fC-XdP"/>
-                        <outlet property="headerViewHeightConstraint" destination="SQP-hS-Yem" id="c6w-hz-lZ8"/>
+                        <outlet property="headerHeightConstraint" destination="SQP-hS-Yem" id="c6w-hz-lZ8"/>
+                        <outlet property="headerImageView" destination="b64-UO-aSk" id="TEI-rI-Lik"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0b-gy-vOk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
